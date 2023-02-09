@@ -175,10 +175,12 @@ void CheckTemperature()
 void ShutDown()
 {
 	int sum;
+	int average_humidity=sum/SENSOR_NUM;
+	
 	for(r=0;r<SENSOR_NUM;r++)
 	{	sum+=humidity[r];
 	}
-	int average_humidity=sum/SENSOR_NUM;
+
 	if(average_humidity<request_humidity)
 	{
 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,GPIO_PIN_RESET);
